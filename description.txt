@@ -1,0 +1,1 @@
+Makes World warper (from World Warper Port (AlchemistNPC) by Dr. Cthulhu) recipe more expensive and not obtainable before Wall of Flesh.
