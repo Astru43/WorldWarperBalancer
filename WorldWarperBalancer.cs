@@ -1,7 +1,13 @@
+using log4net;
+using log4net.Repository.Hierarchy;
+using MonoMod.RuntimeDetour.HookGen;
+using System;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WorldWarperPort.Items;
+using WorldWarperPort.WWPlayer;
 
 namespace WorldWarperBalancer {
     public class WorldWarperBalancer : ModSystem {
@@ -38,6 +44,13 @@ namespace WorldWarperBalancer {
             RecipeGroup group = new(() => "Any base emblem",
                 new int[] { ItemID.SorcererEmblem, ItemID.SummonerEmblem, ItemID.WarriorEmblem, ItemID.RangerEmblem });
             RecipeGroup.RegisterGroup("baseEmblems", group);
+        }
+    }
+
+    class WorldWarperPlayerFix : ModPlayer {
+        public override void ResetEffects() {
+            base.ResetEffects();
+            Player.GetModPlayer<WorldWarperPlayer>().WorldWarperPresent = false;
         }
     }
 }
