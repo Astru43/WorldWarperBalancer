@@ -1,8 +1,3 @@
-using log4net;
-using log4net.Repository.Hierarchy;
-using MonoMod.RuntimeDetour.HookGen;
-using System;
-using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -49,7 +44,6 @@ namespace WorldWarperBalancer {
 
     class WorldWarperPlayerFix : ModPlayer {
         public override void ResetEffects() {
-            base.ResetEffects();
             Player.GetModPlayer<WorldWarperPlayer>().WorldWarperPresent = false;
         }
     }
